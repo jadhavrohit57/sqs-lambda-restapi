@@ -1,0 +1,16 @@
+
+service: Lambda
+frameworkVersion: "3"
+provider:
+  name: aws
+  region: ap-south-1
+
+plugins:
+  - serverless-ignore
+
+functions:
+  updateUser:
+    handler: lambda/processSQS.handler
+    name: processSQS
+    events:
+      - sqs: arn:aws:sqs:ap-south-1:<account-id>:test-queue-sqs
